@@ -1,7 +1,10 @@
 import * as cookie from 'cookie';
+import { client } from './backend/db';
 
 /** @type {import('@sveltejs/kit').Handle} */
 export const handle = async ({ event, resolve }) => {
+  const db = await client();
+  event.locals.db = db;
   const cookies = cookie.parse(event.request.headers.get('cookie') || '');
   event.locals.userid = cookies['userid'] || crypto.randomUUID();
 
