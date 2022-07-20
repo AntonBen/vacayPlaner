@@ -1,12 +1,17 @@
 <script context="module">
   export const prerender = true;
 </script>
+<script>
+
+
+</script>
 
 <svelte:head>
-  <title>Home</title>
-  <meta name="description" content="Svelte demo app" />
+  <title>BARCA!</title>
+  <meta name="description" content="vacay planer" />
 </svelte:head>
 
-<section>
-</section>
+<div class="text-3xl font-bold bg-slate-500" >
+  hej
+</div>
 
