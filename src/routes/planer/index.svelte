@@ -1,8 +1,26 @@
 <script>
-    export let number;
+import { enhance } from "$lib/form";
+
+    const date = new Date()
+    export let data;
 </script>
 
 <div>
-    {number}
-    hej
+    {data}
+    <form
+    action="/planer"
+    method="post"
+    use:enhance={{
+      result: async ({ form }) => {
+        form.reset();
+      }
+    }}
+  >
+    <input name="title" aria-label="Add todo" placeholder="title" required />
+    <input name="description" aria-label="description" placeholder="title" required />
+    <input type="hidden" name="date" value={date} />
+    <input type="submit" value="done"/>
+  </form>
+
+    
 </div>
