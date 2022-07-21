@@ -5,7 +5,7 @@ export const get = async ({locals}: any) => {
     const response = await locals.db.query("SELECT * FROM activity");
     return {
         body:{
-            data: JSON.stringify(response[0])
+            activity: response[0]
         }
     }
 }
@@ -25,7 +25,6 @@ export const post = async ({request,locals}: any ) => {
             if (err) throw err;
             console.log("1 record inserted");
           });
-        return response
     }
     catch (err) {
         console.log(err)
