@@ -1,7 +1,7 @@
 
-<script>
+<script lang="ts">
 import Day from "$lib/Day.svelte"
-export let activity
+export let activity;
 const week = ['07', '08', '09', '10', '11', '12', '13', '14']
 const activityMap = new Map();
 const activityKeys = activity.map(act => {

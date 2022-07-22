@@ -11,6 +11,7 @@ const stringDate = newDate.toLocaleDateString("sv-se", {weekday: 'long'});
 function handleOpen() {
     openModal(Modal, { 
         date: newDate,
+        method: 'post'
     })
 }
 </script>

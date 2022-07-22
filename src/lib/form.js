@@ -40,10 +40,9 @@ export function enhance(form, { pending, error, result } = {}) {
     const data = new FormData(form);
 
     if (pending) pending({ data, form });
-
     try {
       const response = await fetch(form.action, {
-        method: form.method,
+        method: form._method.value,
         headers: {
           accept: 'application/json'
         },
