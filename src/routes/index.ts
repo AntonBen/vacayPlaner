@@ -25,9 +25,10 @@ export const post = async ({request,locals}: any ) => {
             if (err) throw err;
             console.log("1 record inserted");
           });
+          return response
     }
     catch (err) {
         console.log(err)
+        return {}
     }
-    return "hej"
 }

@@ -4,7 +4,7 @@ import Day from "$lib/Day.svelte"
 export let activity;
 const week = ['07', '08', '09', '10', '11', '12', '13', '14']
 const activityMap = new Map();
-const activityKeys = activity.map(act => {
+activity.forEach(act => {
   const day = act.date.substring(8,10)
   if (activityMap.has(day)) {
     return activityMap.set(day, [...activityMap.get(day), act])

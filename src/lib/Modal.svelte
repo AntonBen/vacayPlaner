@@ -1,4 +1,6 @@
-<script type="ts">
+<script lang="ts">
+import { invalidate } from '$app/navigation';
+
   import { closeModal, closeAllModals, modals } from 'svelte-modals'
   import { fly } from 'svelte/transition';
   import { enhance } from './form';
@@ -6,8 +8,28 @@
   export let isOpen: boolean
   export let date: Date
   export let method: string
-  export let activity = {title: '', description: ''}
-  console.log(method)
+  export let activity = {title: '', description: '', id: ''}
+
+  const deleteActivity = async (event:MouseEvent) => {
+    console.log("delete " + activity.id )
+    try {
+      const response = await fetch(`/planer/${activity.id}?_method=DELETE`, {
+        method: 'POST',
+        headers: {
+          accept: 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        console.log("delete")
+        closeModal();
+        window.location.href = window.location.href
+      }
+    } catch (e) {
+      console.error(e)
+    }
+  }
+  
 </script>
   
   {#if isOpen}
@@ -47,6 +69,7 @@
           <input type="hidden" name="_method" value={method} />
           <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
             <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Lägg till</button>
+            <button type="button" on:click={deleteActivity}> delete</button>
           </div>
         </div>
         </form>

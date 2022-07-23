@@ -1,5 +1,6 @@
 /** @type {import('@sveltejs/kit').RequestHandler} */
 
+import type { RequestHandler } from "@sveltejs/kit";
 import type { MysqlError } from "mysql";
 
 export const get = async ({locals}: any) => {
@@ -12,7 +13,8 @@ export const get = async ({locals}: any) => {
     }
 }
 
-export const post = async ({request,locals}: any ) => {
+
+export const post: RequestHandler = async ({request,locals} ) => {
     const form = await request.formData();
     const formateString = new Date(form.get('date')).toISOString();
     const body = {
@@ -23,16 +25,13 @@ export const post = async ({request,locals}: any ) => {
         start_date: formateString
     }
     try {
-        const response = await locals.db.query("INSERT INTO activity SET ?", body , function (err:MysqlError) {
-            if (err) throw err;
-            console.log("1 record inserted");
-          });
+        const response = await locals.db.query("INSERT INTO activity SET ?", body );
         return response
     }
     catch (err) {
         console.log(err)
     }
-    return "hej"
+    return {}
 }
 
 export const put = async ({request,locals}:any) => {
