@@ -19,9 +19,11 @@ activity.forEach(act => {
   <meta name="description" content="vacay planer" />
 </svelte:head>
 
-<div class="flex bg-slate-50 gap-2 px-4 py-10" >
+<h1>Planera Barca Resan!</h1>
+<div class="flex gap-2 px-4 m-5" >  
   {#each week as day}
     <Day activites={activityMap.get(day)} date={day} />
   {/each}
+  <div style="min-width: 20px;"></div>
 </div>
 

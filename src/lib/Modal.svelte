@@ -29,7 +29,7 @@ import { invalidate } from '$app/navigation';
       console.error(e)
     }
   }
-  
+
 </script>
   
   {#if isOpen}
@@ -67,9 +67,14 @@ import { invalidate } from '$app/navigation';
           <input type="hidden" value={1} name="color" >
           <input type="hidden" value={activity.id} name="id" >
           <input type="hidden" name="_method" value={method} />
-          <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-            <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Lägg till</button>
-            <button type="button" on:click={deleteActivity}> delete</button>
+          <div class="px-4 py-3 bg-gray-50 flex flex-row-reverse justify-between sm:px-6">
+            <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              {method === 'post' ? 'Add' : 'Update'}
+            </button>
+            {#if method === 'put'}
+            <button type="button" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500" on:click={deleteActivity}> Delete</button>
+            {/if}
+            
           </div>
         </div>
         </form>

@@ -18,7 +18,7 @@ import Modal from '$lib/Modal.svelte';
 </script>
 
 
-<main>
+<main class="main">
   <slot />
 </main>
 
@@ -32,15 +32,14 @@ import Modal from '$lib/Modal.svelte';
 
 
 <style>
-  main {
+  .main {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
     width: 100%;
-    max-width: 1400px;
+    max-width: 1600px;
     margin: 0 auto;
     box-sizing: border-box;
+    overflow: auto;
+    min-height: 100vh;
   }
 
   .backdrop {
