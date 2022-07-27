@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { webVitals } from '$lib/vitals';
   import { browser } from '$app/env';
   import { page } from '$app/stores';
@@ -15,9 +15,13 @@
   }
 import { Modals, closeModal } from 'svelte-modals';
 import Modal from '$lib/Modal.svelte';
+import Nav from '../components/Nav.svelte';
+import Sidebar from '../components/Sidebar.svelte';
+export let sidebar = false;
 </script>
 
-
+<Nav bind:sidebar />
+<Sidebar bind:sidebar  />
 <main class="main">
   <slot />
 </main>
@@ -39,7 +43,8 @@ import Modal from '$lib/Modal.svelte';
     margin: 0 auto;
     box-sizing: border-box;
     overflow: auto;
-    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
 
   .backdrop {

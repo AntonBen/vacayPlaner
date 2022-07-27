@@ -30,6 +30,7 @@
   "type": "module",
   "dependencies": {
     "@fontsource/fira-mono": "^4.5.0",
+    "@googlemaps/js-api-loader": "^1.14.3",
     "cookie": "^0.4.1",
     "mysql2": "^2.3.3",
     "svelte-modals": "^1.1.0",
